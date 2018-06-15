@@ -1,3 +1,3 @@
-Settings.defaults[:currency] = :eur
-Settings.defaults[:days_to_due] = 0
+Settings.currency = :eur
+Settings.days_to_due = 0
 

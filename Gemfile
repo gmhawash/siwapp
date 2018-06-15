@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby "2.5.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.8'
+gem 'rails', '5.0.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -50,7 +50,7 @@ end
 gem 'active_model_serializers'
 gem 'acts-as-taggable-on'  # https://github.com/mbleigh/acts-as-taggable-on
 gem 'autoprefixer-rails'
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap', '4.0.0.alpha3'
 # to add items dinamically
 gem 'cocoon'
 gem 'factory_girl_rails'
@@ -59,7 +59,7 @@ gem 'fastclick-rails'
 gem 'haml'
 gem 'jquery-ui-rails'
 gem 'js-routes'
-gem 'pg'
+gem 'pg', "~> 0.21" 
 gem 'pry-rails', group: :development
 gem 'puma'
 gem 'rails_12factor', group: :production
