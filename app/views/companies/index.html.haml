@@ -1,0 +1,26 @@
+%h1=t("companies")
+%div{data: {role: 'infinite-scroll'}}
+  .table-responsive
+    %table.table.table-hover.table-striped.table-bordered
+      %thead
+        %tr
+          %th.no-wrap=t("company name")
+          %th.no-wrap=t("tax id")
+          %th.no-wrap=t("phone")
+          %th.no-wrap=t("email")
+          %th.text-right
+      %tbody{data: {role: 'infinite-content'}}
+        - @companies.each_with_index do |company, i|
+          %tr{data: {href: edit_company_path(company), itemid: company.id, page_start: i.zero?, page: @companies.current_page}}
+            %td.no-wrap
+              =link_to company.name, edit_company_path(company)
+            %td.no-wrap= company.tax_identifier
+            %td.no-wrap= company.email
+            %td.no-wrap= company.phone
+            %td.text-center{"data-no-href": ""}
+              %a{class: "material-icons",
+                 title: "See Invoices",
+                 href: "#{company.id}"} list
+  .content-loading.hide{data: {role: 'infinite-status'}}
+    .spinner
+

@@ -1,0 +1,11 @@
+.row
+  .col-xs-12.col-xl-8
+    .row
+      = render 'shared/text_fields', f:f, fields: [:name, :tax_identifier]
+    .row
+      = render 'shared/text_fields', f:f, fields: [:currency, :url, :phone]
+      = render 'shared/email_fields', f:f, fields: [:email]
+    .row
+      = render 'shared/text_area_fields', f:f, fields: [:address]
+    .row
+
