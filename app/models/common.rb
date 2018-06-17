@@ -10,6 +10,7 @@ class Common < ActiveRecord::Base
 
   # Relations
   belongs_to :customer
+  belongs_to :company
   belongs_to :series
   belongs_to :print_template,
     :class_name => 'Template',

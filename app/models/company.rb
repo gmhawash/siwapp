@@ -12,4 +12,8 @@ class Company < ApplicationRecord
     [:with_terms]
   end
 
+  def logo
+
+  end
+
 end

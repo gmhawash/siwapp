@@ -179,6 +179,7 @@ class CommonsController < ApplicationController
       :currency,
 
       :customer_id,
+      :company_id,
       :identification,
       :name,
       :email,

@@ -1,5 +1,4 @@
 class InvoicesController < CommonsController
-
   def show
     # Shows the template in an iframe
     if @invoice.get_status != :paid
@@ -67,8 +66,10 @@ class InvoicesController < CommonsController
   # Renders a common's template in html and pdf formats
   def print
     @invoice = Invoice.find(params[:id])
-    html = render_to_string :inline => @invoice.get_print_template.template,
-      :locals => {:invoice => @invoice, :settings => Settings}
+    html = render_to_string(
+      inline: @invoice.get_print_template.template,
+      locals: {invoice: @invoice, company: @invoice.company}
+    )
     respond_to do |format|
       format.html { render inline: html }
       format.pdf do
@@ -104,12 +105,15 @@ class InvoicesController < CommonsController
         flash[:info] = "Successfully set as paid #{total} invoices."
       when 'pdf'
         html = ''
-        invoices.each do |inv|
-          @invoice = inv
-          html += render_to_string \
-              :inline => inv.get_print_template.template,
-              :locals => {:invoice => @invoice,
-                          :settings => Settings}
+        invoices.each do |invoice|
+          @invoice = invoice
+          html += render_to_string(
+              :inline => invoice.get_print_template.template,
+              :locals => {
+                invoice: @invoice,
+                company: invoice.company
+              }
+            )
           html += '<div class="page-break" style="page-break-after:always;"></div>'
         end
         send_data(@invoice.pdf(html),

@@ -24,6 +24,14 @@
           = f.check_box :draft
           =t("save as draft")
 
+
+  .row
+    .col-xs-12.col-xl-8
+      .row
+        .col-xs-12.col-sm-4
+          .form-group
+            = f.label :company_id
+            = f.collection_select :company_id, Company.all, :id, :name, {}, {multiple: false, class: 'form-control c-select'}
   %fieldset.m-b-2
     %legend.m-b-1=t("customer")
     = render partial: 'customers/form_fields', locals: {f: f}

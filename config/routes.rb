@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :companies
   root 'dashboard#index'
 
   get    'login'   => 'sessions#new',      as: :login
@@ -20,13 +19,19 @@ Rails.application.routes.draw do
   resources :commons do
     post 'select_print_template', on: :member
   end
-  resources :invoices do
-    post 'bulk', on: :collection
-    post 'select_print_template', on: :member
-    get 'autocomplete', on: :collection
-    get 'chart_data', on: :collection
-    get 'send_email', on: :member
-    get 'print', on: :member
+
+
+  resources :invoices, only: [:index] do
+      post 'bulk', on: :collection
+      post 'select_print_template', on: :member
+      get 'autocomplete', on: :collection
+      get 'chart_data', on: :collection
+      get 'send_email', on: :member
+      get 'print', on: :member
+  end
+
+  resources :companies do
+    resources :invoices
   end
 
   resources :recurring_invoices do

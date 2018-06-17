@@ -194,8 +194,11 @@ class Invoice < Common
 
   # Returns the pdf file
   def pdf(html)
-    WickedPdf.new.pdf_from_string(html,
-      margin: {:top => "20mm", :bottom => 0, :left => 0, :right => 0})
+    WickedPdf.new.pdf_from_string(
+      html,
+      margin: {top: "20mm", bottom: 0, left: 0, right: 0},
+      zoom: 4
+    )
   end
 
 

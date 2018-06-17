@@ -13,5 +13,11 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    Company.create(
+      name: Settings.company_name,
+      tax_identifier: Settings.company_vat_id,
+      address: Settings.company_address,
+    )
   end
 end
