@@ -6,18 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Settings.company_name = ""
-Settings.company_address = ""
-Settings.company_vat_id = ""
-Settings.company_phone = ""
-Settings.email_subject = ""
-Settings.email_body = ""
-Settings.company_email = ""
-Settings.company_url = ""
-Settings.company_logo = ""
-Settings.legal_terms = ""
-Settings.currency = "usd"
-
 Template.create(name: "Print Default",
                 template: File.read(Rails.root.join('db', 'fixtures', 'print_default.html.erb')).strip(),
                 print_default: true)
