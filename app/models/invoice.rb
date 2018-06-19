@@ -10,6 +10,7 @@ class Invoice < Common
     allow_nil: true }
   validates_uniqueness_of :number,  scope: :series, conditions: -> { where.not(draft: true) }
 
+
   # Events
   around_save :assign_invoice_number
   after_save :purge_payments

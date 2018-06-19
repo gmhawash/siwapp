@@ -3,16 +3,16 @@ en:
   activerecord:
     attributes:
       customer:
-        identification:  VAT ID
+        identification:  Tax ID
       invoice:
-        identification:  VAT ID
+        identification:  Tax ID
         tag_list:        Tags
         terms:           Legal Terms and Conditions
       item:
         net_amount:      Total
         unitary_cost:    Price
       recurring_invoice:
-        identification:  VAT ID
+        identification:  Tax ID
   add line:              Add Line
   add payment:           Add Payment
   address:               Address

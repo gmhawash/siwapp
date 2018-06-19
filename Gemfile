@@ -53,6 +53,7 @@ gem 'active_model_serializers'
 gem 'acts-as-taggable-on'  # https://github.com/mbleigh/acts-as-taggable-on
 gem 'autoprefixer-rails'
 gem 'bootstrap', '4.0.0.alpha3'
+gem 'bootstrap_form'
 # to add items dinamically
 gem 'cocoon'
 gem 'factory_girl_rails'
@@ -62,7 +63,7 @@ gem 'haml'
 gem 'jquery-ui-rails'
 gem 'js-routes'
 gem 'pg', "~> 0.21" 
-gem 'pry-rails', group: :development
+gem 'pry-byebug', group: :development
 gem 'puma'
 gem 'rails_12factor', group: :production
 gem "rails-settings-cached"

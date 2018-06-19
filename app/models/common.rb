@@ -27,8 +27,14 @@ class Common < ActiveRecord::Base
   validate :valid_customer_identification
   validates :series, presence: true
   validates :email,
-    format: {with: /\A(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})\z/i,
-             message: "Only valid emails"}, allow_blank: true
+    format: {
+      with: /\A(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})\z/i,
+             message: "Only valid emails"
+    },
+    allow_blank: true
+
+  validates :company_id, presence: true
+  validates :name, presence: true
 
   # Events
   after_save :purge_items

@@ -1,4 +1,4 @@
-= form_for @invoice, data: {new: @invoice.new_record?, role: 'invoice', controller: controller_name, model: controller_name.classify.underscore}, html: {class: 'invoice'} do |f|
+= bootstrap_form_for @invoice, data: {new: @invoice.new_record?, role: 'invoice', controller: controller_name, model: controller_name.classify.underscore}, html: {class: 'invoice'} do |f|
 
   - if @invoice.errors.any?
     #error_explanation
@@ -20,9 +20,7 @@
 
     - if @invoice.new_record? or @invoice.draft
       .checkbox
-        %label
-          = f.check_box :draft
-          =t("save as draft")
+        = f.check_box :draft, label: t("save as draft")
 
 
   .row
@@ -30,7 +28,6 @@
       .row
         .col-xs-12.col-sm-4
           .form-group
-            = f.label :company_id
             = f.collection_select :company_id, Company.all, :id, :name, {}, {multiple: false, class: 'form-control c-select'}
   %fieldset.m-b-2
     %legend.m-b-1=t("customer")
@@ -45,36 +42,29 @@
         .row
           .col-xs-12.col-sm-4
             .form-group
-              = f.label :series_id
               = f.collection_select :series_id, Series.enabled, :id, :to_s, {}, {multiple: false, class: 'form-control c-select', 'data-series_id_was': @invoice.series_id_was}
           .col-xs-12.col-sm-4
             - if not @invoice.new_record? and not @invoice.draft
               .form-group
-                = f.label :number
                 = f.text_field :number, {class: 'form-control', 'data-number_was': @invoice.number_was}
           .col-xs-12.col-sm-4
             .form-group
-              = f.label :currency
               = f.collection_select :currency, Money::Currency.all, :id, :iso_code, {}, {class: 'form-control c-select'}
 
         .row
           .col-xs-12.col-sm-6
             .form-group
-              = f.label :issue_date
               = f.date_field :issue_date, {class: 'form-control'}
           .col-xs-12.col-sm-6
             .form-group
-              = f.label :due_date
               = f.date_field :due_date, {class: 'form-control'}
 
         .row
           .col-xs-12.col-sm-6
             .form-group
-              = f.label :email_template_id
               = f.collection_select :email_template_id, @templates, :id, :to_s, {include_blank: t("select template for e-mail")}, {class: 'form-control c-select'}
           .col-xs-12.col-sm-6
             .form-group
-              = f.label :print_template_id
               = f.collection_select :print_template_id, @templates, :id, :to_s, {include_blank: t("select template to print")}, {class: 'form-control c-select'}
 
     = render partial: 'shared/item_form', locals: {f: f, invoice: @invoice}

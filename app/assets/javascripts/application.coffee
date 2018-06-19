@@ -44,3 +44,4 @@ jQuery(document).ready ($) ->
     editor = new Behave({textarea: this})
 
   autosize $('textarea.autosize')
+  $('input').prop('autocomplete', 'nope');

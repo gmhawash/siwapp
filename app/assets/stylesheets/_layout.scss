@@ -63,3 +63,8 @@ input[type="date"].form-control {
     }
   }
 }
+
+label.required:after {
+  content:" *";
+  color: red;
+}
